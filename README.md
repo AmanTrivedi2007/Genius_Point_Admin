@@ -27,7 +27,7 @@ Stationery Store
     └── Store management application
 ```
 
-The Admin Service provides the store with a centralized interface to manage day-to-day operations.
+The Admin Service provides the store with a centralized interface to manage day-to-day operations can get the order infromation and can easily handle its Product operations.
 
 Through the Admin Service, authorized staff can manage:
 
