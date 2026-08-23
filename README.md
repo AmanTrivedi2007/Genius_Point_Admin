@@ -1,4 +1,4 @@
-````md
+
 # 🛠️ Stationery Store — Admin Service
 
 The **Admin Service** is the store-management application of the Stationery Store platform.
@@ -25,7 +25,7 @@ Stationery Store
 │
 └── Admin Service
     └── Store management application
-````
+```
 
 The Admin Service provides the store with a centralized interface to manage day-to-day operations.
 
