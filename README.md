@@ -777,5 +777,3 @@ License details will be added once the project is finalized.
 
 ```
 ```
-#   G e n i u s _ P o i n t _ A d m i n  
- 
