@@ -233,12 +233,15 @@ function Login() {
       const res = await fetch("http://localhost:8000/api/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: form.identifier, password: form.password }),
+        body: JSON.stringify({ email: form.identifier, password: form.password }),
       });
       const data = await res.json().catch(() => ({}));
+      const error = Object.values(data.errors || {})
+        .flat()
+        .join(" ");
       setServerMessage(data.message)
       if (!res.ok) {
-        setServerError(data.detail || data.message || "Login failed. Check your details and try again.");
+        setServerError(error||data.detail || data.message || "Login failed. Check your details and try again.");
         return;
       }
       if (data.success == true) setSuccess(true);
@@ -258,13 +261,13 @@ function Login() {
         <p className="sub">Access your Genius Point account.</p>
 
         <form onSubmit={submit}>
-          <Field label="Email or phone number" error={errors.identifier}>
+          <Field label="Enter Your Email " error={errors.email}>
             <input
               className="ss-input"
               type="text"
-              placeholder="you@example.com or 98765 43210"
-              value={form.identifier}
-              onChange={(e) => setForm({ ...form, identifier: e.target.value })}
+              placeholder="you@example.com"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
           </Field>
 

@@ -245,11 +245,15 @@ function Register() {
       });
 
       const data = await res.json().catch(() => ({}));
-
+      
+       const error = Object.values(data.errors || {})
+        .flat()
+        .join(" ");
       if (!res.ok) {
         const firstError =
+          error ||
           data.detail ||
-          data.message ||
+          data.message || 
           (typeof data === "object" ? Object.values(data)[0] : null);
         setServerError(
           Array.isArray(firstError) ? firstError[0] : firstError || "Registration failed. Please try again."

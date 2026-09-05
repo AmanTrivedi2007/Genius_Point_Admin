@@ -41,6 +41,7 @@ def Register(request):
 @api_view(["POST"])
 def Login(request):
 
+
     serializer = LoginSerializer(
         data=request.data
     )
@@ -56,6 +57,9 @@ def Login(request):
             "message": "Login successful!",
             "role": role
         })
+
+    
+
 
     return Response({
         "success": False,
