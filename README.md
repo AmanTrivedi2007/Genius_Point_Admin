@@ -281,7 +281,7 @@ This allows the store to clearly identify which orders are:
 
 # 💳 Payment Management
 
-The Admin Service allows authorized staff to view payment information associated with orders.
+The Admin Service allows authorized staff to view payment information associated with orders and can take actions needed for payment management.
 
 Online payment is **optional**.
 

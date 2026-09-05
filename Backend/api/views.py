@@ -66,3 +66,9 @@ def Login(request):
         "message": "Invalid email or password.",
         "errors": serializer.errors
     }, status=401)
+
+@api_view(["POST"])
+def dashboard(request):
+    return Response({
+        "messege":"endpoint is working"
+    })
