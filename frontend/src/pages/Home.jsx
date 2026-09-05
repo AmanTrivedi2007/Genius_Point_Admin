@@ -29,6 +29,16 @@ const GlobalStyle = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
+    html, body, #root {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
     .ss-root {
       --ink: #232f24;
       --ink-soft: #4d5a4c;
@@ -46,9 +56,11 @@ const GlobalStyle = () => (
       background: var(--paper);
       min-height: 100vh;
       width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
       position: relative;
     }
-    .ss-root * { box-sizing: border-box; }
+
     .ss-display {
       font-family: 'Fraunces', serif;
       letter-spacing: -0.01em;
@@ -77,8 +89,10 @@ const GlobalStyle = () => (
       background: rgba(241,234,214,0.92);
       backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--line);
+      width: 100%;
     }
     .ss-header-inner {
+      width: 100%;
       max-width: 1180px;
       margin: 0 auto;
       padding: 14px 20px;
@@ -160,14 +174,15 @@ const GlobalStyle = () => (
 
     /* ============ HERO ============ */
     .ss-hero {
+      width: 100%;
       max-width: 1180px; margin: 0 auto;
-      padding: 56px 20px 40px;
+      padding: clamp(40px, 6vw, 76px) 20px clamp(40px, 5vw, 60px);
       display: grid;
       grid-template-columns: 1fr;
-      gap: 34px;
+      gap: clamp(24px, 4vw, 34px);
       align-items: center;
     }
-    @media (min-width: 940px) { .ss-hero { grid-template-columns: 1.1fr 0.9fr; padding: 76px 20px 60px; } }
+    @media (min-width: 940px) { .ss-hero { grid-template-columns: 1.1fr 0.9fr; } }
 
     .ss-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
@@ -217,8 +232,21 @@ const GlobalStyle = () => (
     .ss-ledger-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--olive); margin-bottom: 6px; padding-left: 30px; }
 
     /* ============ SECTION SHELL ============ */
-    .ss-section { max-width: 1180px; margin: 0 auto; padding: 60px 20px; }
+    /* full-width background, content capped at 1180px via wrapper below */
+    .ss-section { width: 100%; margin: 0; padding: 60px 20px; }
     .ss-section-alt { background: var(--paper-deep); }
+
+    .ss-section-head,
+    .ss-cat-grid,
+    .ss-quality-grid,
+    .ss-owner-wrap,
+    .ss-contact-grid {
+      width: 100%;
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .ss-section-head { margin-bottom: 36px; max-width: 620px; }
     .ss-kicker {
       font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.14em;
@@ -325,7 +353,7 @@ const GlobalStyle = () => (
     .ss-contact-card .go { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--brass); display: flex; align-items: center; gap: 4px; margin-top: 4px; }
 
     /* ============ FOOTER ============ */
-    .ss-footer { background: var(--ink); color: rgba(241,234,214,0.85); }
+    .ss-footer { background: var(--ink); color: rgba(241,234,214,0.85); width: 100%; }
     .ss-footer-inner { max-width: 1180px; margin: 0 auto; padding: 46px 20px 26px; display: grid; grid-template-columns: 1fr; gap: 32px; }
     @media (min-width: 760px) { .ss-footer-inner { grid-template-columns: 1.3fr 1fr 1fr; } }
     .ss-footer h5 { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper-deep); margin: 0 0 14px; opacity: 0.7; }
@@ -416,6 +444,18 @@ const GlobalStyle = () => (
     .ss-hours-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .ss-hours-row { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--ink-soft); border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
     .ss-hours-row span:last-child { color: var(--ink); font-weight: 500; }
+
+    /* ============ SMALL SCREEN FIXES ============ */
+    @media (max-width: 480px) {
+      .ss-section { padding: 42px 16px; }
+      .ss-hero { padding: 40px 16px; }
+      .ss-hero h1 { font-size: clamp(32px, 10vw, 42px); }
+      .ss-hero p.lead { font-size: 15px; }
+      .ss-hero-actions { flex-direction: column; }
+      .ss-hero-actions .ss-btn { width: 100%; }
+      .ss-row-2 { grid-template-columns: 1fr; }
+      .ss-auth-card { padding: 26px 20px; }
+    }
   `}</style>
 );
 

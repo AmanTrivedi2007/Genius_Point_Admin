@@ -29,7 +29,7 @@ function App() {
                 />
                 
                 <Route
-                    path="/contactus"
+                    path="/contact"
                     element={<ContactPage />}
                 />
 
