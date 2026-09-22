@@ -777,3 +777,5 @@ License details will be added once the project is finalized.
 
 ```
 ```
+Problem Faced :-
+How are lots of a particular product identified in stores? For example, if I add a product with a price of $X$ and 50 units to my catalog, how can I assign it a unique identifier, and what are the standard methods for doing this? I am building a product management application for a business and want to structure this correctly. When an admin adds or updates a product, how should they specify and record the unique identifier for that specific lot or product?
